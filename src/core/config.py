@@ -1,10 +1,11 @@
+import os
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
-
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql://postgres:kiran@localhost:5432/skillbridge"
-    SECRET_KEY: str = "change-me-in-production-use-a-long-random-string"
+    DATABASE_URL: str = os.getenv("postgresql://postgres:kiran@localhost:5432/skillbridge")   # ✅ FIX
+    SECRET_KEY: str = os.getenv( "change-me-in-production-use-a-long-random-string")
+
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
     MONITORING_TOKEN_EXPIRE_MINUTES: int = 60
