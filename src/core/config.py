@@ -1,12 +1,10 @@
-
-import os
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = os.getenv("DATABASE_URL")   # ✅ MUST use env
-    SECRET_KEY: str = os.getenv("SECRET_KEY")
+    DATABASE_URL: str
+    SECRET_KEY: str
 
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
